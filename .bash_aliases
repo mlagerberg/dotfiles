@@ -1,8 +1,10 @@
 # Navigation shortcuts
 alias sn='sudo nano'
 alias ..='cd ..'
+alias cd..='cd ..'
 alias cddocs='cd /media/hdd/bitsync/Docs'
 alias cdmedia='cd /media/hdd'
+alias la='ls -la'
 
 # scripts
 alias status='/home/pi/scripts/status.sh'
