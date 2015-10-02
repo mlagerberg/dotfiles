@@ -1,3 +1,8 @@
+# start tmux 
+if command -v tmux>/dev/null; then
+  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+fi
+
 # Navigation shortcuts
 alias sn='sudo nano'
 alias ..='cd ..'
