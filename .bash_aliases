@@ -1,8 +1,3 @@
-# start tmux 
-#if command -v tmux>/dev/null; then
-#  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
-#fi
-
 # Navigation shortcuts
 alias sn='sudo nano'
 alias ..='cd ..'
@@ -48,4 +43,7 @@ mkdircd() {
 
 # And finally, attach to tmux
 # (tmux config makes sure a new session is created if none exist)
-tmux attach
+# but only if not running inside tmux alread
+if [[ ! $TERM =~screen ]]; then
+	tmux attach
+fi
