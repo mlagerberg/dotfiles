@@ -16,7 +16,7 @@ alias status='/home/pi/scripts/status.sh'
 alias btc='python ~/scripts/btc.py'
 alias isrunning='/home/pi/scripts/services.sh isrunning'
 alias chess='/home/pi/bitchess/chess'
-alias tmuxhelp='less ~/dotfiles/dotfiles/tmux.txt'
+alias tmuxhelp='less ~/dotfiles/dotfiles/tmux.md'
 
 # nano
 #alias nano='nano --smooth --autoindent --const'

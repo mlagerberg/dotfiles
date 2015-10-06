@@ -1,22 +1,31 @@
-# Show sessions `tmux ls`
-Ctrl-b s
+### Sessions
 
-# New session
-tmux new -s session-name
+Show sessions (`tmux ls`)
 
-# Attach to existing session
-tmux a
-tmux a -t session-name
+	Ctrl-b s
 
-# Detaching from session `tmux detach`
-Ctrl-b d
+> Note: customized shortcut is `Ctrl-space`
 
-# Kill session
-tmux kill-session -t session-name
+New session
+
+	tmux new -s session-name
+
+Attach to existing session
+
+	tmux a
+	tmux a -t session-name
+
+Detaching from session (`tmux detach`)
+
+	Ctrl-b d
+
+Kill session
+
+	tmux kill-session -t session-name
 
 
-# Shortcuts
-Ctrl-b
+### Key commands (`Ctrl-space`)
+
 	? = help
 	s = list sessions
 	$ = rename current session
