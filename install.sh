@@ -4,6 +4,7 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 cd $DIR
 
+# Creates links to the files in the repo
 for file in $(ls -1a | grep "^\.[a-z][a-z\._-]\+$" ); do
   if [ "$file" == ".git" ]; then
     continue
@@ -24,3 +25,7 @@ for file in $(ls -1a | grep "^\.[a-z][a-z\._-]\+$" ); do
     ln -s $DIR/$file $HOME/$file
   fi
 done
+
+# Other convenient configurations
+git config --global color.ui auto
+
