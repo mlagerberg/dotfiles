@@ -44,6 +44,6 @@ mkdircd() {
 # And finally, attach to tmux
 # (tmux config makes sure a new session is created if none exist)
 # but only if not running inside tmux alread
-if [[ ! $TERM =~screen ]]; then
+if [[ ! $TERM =~ screen ]]; then
 	tmux attach
 fi
