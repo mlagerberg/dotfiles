@@ -10,6 +10,8 @@ alias la='ls -la'
 alias status='/home/pi/scripts/status.sh'
 alias btc='python ~/scripts/btc.py'
 alias isrunning='/home/pi/scripts/services.sh isrunning'
+alias chess='/home/pi/bitchess/chess'
+alias tmuxhelp='less ~/dotfiles/dotfiles/tmux.md'
 
 # nano
 #alias nano='nano --smooth --autoindent --const'
@@ -38,3 +40,10 @@ cdls() {
 mkdircd() {
   mkdir -p "$@" && eval cd "\"\$$#\"";
 }
+
+# And finally, attach to tmux
+# (tmux config makes sure a new session is created if none exist)
+# but only if not running inside tmux alread
+if [[ ! $TERM =~ screen ]]; then
+	tmux attach
+fi
