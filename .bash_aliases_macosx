@@ -1,0 +1,7 @@
+# Mac OS X specific aliases go here
+
+alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES;'
+alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO;'
+alias longpress='defaults write -g ApplePressAndHoldEnabled -bool true'
+alias nolongpress='defaults write -g ApplePressAndHoldEnabled -bool false'
+
