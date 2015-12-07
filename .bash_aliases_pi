@@ -1,0 +1,17 @@
+# Navigation shortcuts
+alias cddocs='cd /media/hdd/bitsync/Docs'
+alias cdmedia='cd /media/hdd'
+
+# scripts
+alias status='/home/pi/scripts/status.sh'
+alias btc='python ~/scripts/btc.py'
+alias isrunning='/home/pi/scripts/services.sh isrunning'
+alias chess='/home/pi/bitchess/chess'
+alias tmuxhelp='less ~/dotfiles/dotfiles/tmux.md'
+
+# Attach to tmux
+# (tmux config makes sure a new session is created if none exist)
+# but only if not running inside tmux alread
+if [[ ! $TERM =~ screen ]]; then
+	tmux attach
+fi
