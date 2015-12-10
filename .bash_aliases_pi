@@ -9,6 +9,9 @@ alias isrunning='/home/pi/scripts/services.sh isrunning'
 alias chess='/home/pi/bitchess/chess'
 alias tmuxhelp='less ~/dotfiles/dotfiles/tmux.md'
 
+alias hdmioff='sudo /opt/vc/bin/tvservice -o'
+alias hmdion='sudo /opt/vc/bin/tvservice -p'
+
 # Attach to tmux
 # (tmux config makes sure a new session is created if none exist)
 # but only if not running inside tmux alread
