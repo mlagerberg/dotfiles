@@ -11,6 +11,8 @@ alias tmuxhelp='less ~/dotfiles/dotfiles/tmux.md'
 
 alias hdmioff='sudo /opt/vc/bin/tvservice -o'
 alias hmdion='sudo /opt/vc/bin/tvservice -p'
+alias ledoff='echo 0 | sudo tee /sys/class/leds/led1/brightness'
+alias ledon='echo 1 | sudo tee /sys/class/leds/led1/brightness'
 
 # Attach to tmux
 # (tmux config makes sure a new session is created if none exist)
