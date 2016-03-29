@@ -36,8 +36,8 @@ human() {
     echo '0 seconds'
 }
 
-#exec >  >(tee -a /home/pi/logs/rsync.log)
-#exec 2> >(tee -a /home/pi/logs/rsync.log >&2)
+#exec >  >(tee -a /home/pi/rsync.log)
+#exec 2> >(tee -a /home/pi/rsync.log >&2)
 
 # Remount backup partition for read-write
 # (as a safety measure, its read-only for the
@@ -79,7 +79,7 @@ echo "Script ran for $(human $DIFF)"
 
 # Remember this moment
 date > /home/pi/rsync.log
-echo "Script ran for $(human $DIFF)" > /home/pi/logs/rsync.log
+echo "Script ran for $(human $DIFF)" > /home/pi/rsync.log
 
 # Annnnd notify
 echo "Backup finished in $(human $DIFF)" | mail -s "Backup finished" "pi@localhost"

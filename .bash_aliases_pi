@@ -1,10 +1,10 @@
 # Navigation shortcuts
-alias cddocs='cd /media/hdd/bitsync/Docs'
 alias cdmedia='cd /media/hdd'
+alias cdbackup='cd /media/backup'
 
 # scripts
-alias status='/home/pi/scripts/status.sh'
-alias chess='/home/pi/bitchess/chess'
+alias status='~/dotfiles/dotfiles/status.sh'
+alias chess='~/bitchess/chess'
 alias tmuxhelp='less ~/dotfiles/dotfiles/tmux.md'
 
 alias hdmioff='sudo /opt/vc/bin/tvservice -o'

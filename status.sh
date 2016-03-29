@@ -1,7 +1,7 @@
 #!/bin/bash
-# /home/pi/dotfiles/status.sh
+# /home/pi/dotfiles/dotfiles/status.sh
 
-source /home/pi/dotfiles/functions.sh
+source /home/pi/dotfiles/dotfiles/functions.sh
 
 log_ts_file="/home/pi/.status_timestamp"
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-#/home/pi/scripts/functions.sh
+#/home/pi/dotfiles/dotfiles/functions.sh
 
 function pause(){
    read -p "$*"
