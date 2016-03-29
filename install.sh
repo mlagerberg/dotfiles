@@ -26,6 +26,10 @@ for file in $(ls -1a | grep "^\.[a-z][a-z\._-]\+$" ); do
   fi
 done
 
+chmod +x backup_pi.sh
+chmod +x status.sh
+chmod +x run_rsync.sh
+
 # Other convenient configurations
 git config --global color.ui auto
 
