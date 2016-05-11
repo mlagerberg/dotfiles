@@ -1,5 +1,5 @@
 #!/bin/bash
-# Runs a backup of /media/hdd/BTSync to /media/backup/,
+# Runs a backup of /media/hdd/BTSync to /media/backup/BTSync,
 # incremental, keeping the last 3 versions.
 
 
@@ -51,7 +51,7 @@ START=$(date +%s)
 echo "==="
 date
 echo "Starting backup script..."
-cd /media/backup
+cd /media/backup/BTSync
 
 # Shift old backups (looping around for performance)
 echo "Shifting old backups..."
@@ -64,6 +64,8 @@ mv backup.tmp backup.0 2>/dev/null
 # Create hard link structure (uses practically no space)
 echo "Creating link structure..."
 cp -al backup.1/. backup.0
+
+read -n1 -r -p "Press any key to continue..." key
 
 # Copy only the changes over the hard link structure
 echo "Copying files..."

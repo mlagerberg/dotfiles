@@ -6,6 +6,7 @@ alias cdbackup='cd /media/backup'
 alias status='~/dotfiles/dotfiles/status.sh'
 alias chess='~/bitchess/chess'
 alias tmuxhelp='less ~/dotfiles/dotfiles/tmux.md'
+alias pishrink='~/dotfiles/dotfiles/pishrink.md'
 
 alias hdmioff='sudo /opt/vc/bin/tvservice -o'
 alias hmdion='sudo /opt/vc/bin/tvservice -p'

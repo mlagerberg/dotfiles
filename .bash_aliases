@@ -7,6 +7,7 @@ alias la='ls -la'
 # nano
 #alias nano='nano --smooth --autoindent --const'
 alias nano='nano --autoindent --const'
+alias nanon='nano --const'
 
 # statements I can't remember
 alias users='cat /etc/passwd | grep "/home" |cut -d: -f1'
@@ -30,3 +31,5 @@ cdls() {
 mkdircd() {
   mkdir -p "$@" && eval cd "\"\$$#\"";
 }
+
+. .bash_aliases_pi
