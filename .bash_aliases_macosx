@@ -5,3 +5,7 @@ alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO;'
 alias longpress='defaults write -g ApplePressAndHoldEnabled -bool true'
 alias nolongpress='defaults write -g ApplePressAndHoldEnabled -bool false'
 
+
+# Prevent Gradle from putting Java icons in the Dock
+export JAVA_TOOL_OPTIONS="-Dapple.awt.UIElement=true"
+
