@@ -37,7 +37,7 @@ else
     while read -r line; do
       echo "  [$i] $line"
       i=$((i+1))
-    done <<< "$LIST"
+    done <<< "$DEVICES"
     echo "  [c] Cancel"
     echo ""
   
