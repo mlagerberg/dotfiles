@@ -19,7 +19,6 @@ alias memory='ps aux --sort -rss | head'
 alias edit='nano'
 alias cls='clear'
 
-
 # perform 'ls' after 'cd' if successful.
 cdls() {
   builtin cd "$*"
@@ -28,8 +27,19 @@ cdls() {
     ls
   fi
 }
+
 mkdircd() {
   mkdir -p "$@" && eval cd "\"\$$#\"";
 }
 
-. .bash_aliases_pi
+# Execute ADB command on all connected devices
+adbplus() {
+  DEVICES=`adb devices | grep -v devices | grep device | cut -f 1`
+  for device in $DEVICES; do
+    echo "$device $@ ..."
+    adb -s $device $@
+  done
+}
+
+#. .bash_aliases_pi
+
