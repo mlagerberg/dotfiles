@@ -38,6 +38,7 @@ else
       echo "  [$i] $line"
       i=$((i+1))
     done <<< "$DEVICES"
+    echo "  [a] All"
     echo "  [c] Cancel"
     echo ""
   
@@ -47,7 +48,14 @@ else
       echo "adb -s $SERIAL $@"
       adb -s $SERIAL $@
       break
-    elif (( "$n" == "c" )); then
+    elif [[ $n == "c" ]]; then
+      echo "Canceled."
+      break
+    elif [[ $n == "a" ]]; then
+      for SERIAL in $LIST; do
+        echo "adb -s $SERIAL $@"
+        adb -s $SERIAL $@
+      done
       break
     else
       echo "Let's try that again."
