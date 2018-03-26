@@ -1,6 +1,18 @@
 #!/bin/bash
 
-# Get list of only the device identifiers
+COMMAND=$@
+
+### Handle special simplified commands
+if [ "$1" = "open" ]; then
+  if [ -z "$2" ]; then
+    echo "No url supplied for `open` command."
+    exit 1
+  else
+    COMMAND="shell am start -a android.intent.action.VIEW -d '$2'"
+  fi
+fi
+
+### Get list of only the device identifiers
 # 1 list devices
 # 2 grep away the line 'list of devices'
 # 3 grep away newline at the end
@@ -9,16 +21,17 @@ ALL=`adb devices -l`
 #LIST=`adb devices | grep -v devices | grep device | cut -f1`
 LIST=`echo "$ALL" | grep -v devices | grep device | awk '{print $1}'`
 
-# Similar, but grabbing the model and brand instead
+### Similar, but grabbing the model and brand instead
 # 4 cut off everything but the last part ('model:HTC_One_X')
 # 5 take only the part after the colon ('HTC_One_X')
 DEVICES=`echo "$ALL" | grep -v devices | grep device | awk '{print $5}' | cut -d':' -f2`
 # 6 replace underscores with spaces 
 DEVICES=`echo "${DEVICES//_/ }"`
 
-# Count lines
+### Count lines
 COUNT=`echo "$LIST" | wc -l`
 
+### Execute command
 if ((COUNT==0))
 then
   echo "No devices connected."
@@ -26,12 +39,12 @@ then
 elif ((COUNT==1))
 then
   # execute regular command
-  adb $@
+  adb $COMMAND
 else
   # Show chooser
   while true; do
     echo "Choose a device to execute this command on:"
-    echo "  adb $@"
+    echo "  adb $COMMAND"
     echo ""
     i=1
     while read -r line; do
@@ -45,16 +58,16 @@ else
     read -n1 -s n
     if (( n <= COUNT && n > 0 )); then
       SERIAL=`echo "$LIST" | head -n $n | tail -n 1`
-      echo "adb -s $SERIAL $@"
-      adb -s $SERIAL $@
+      echo "adb -s $SERIAL $COMMAND"
+      adb -s $SERIAL $COMMAND
       break
     elif [[ $n == "c" ]]; then
       echo "Canceled."
       break
     elif [[ $n == "a" ]]; then
       for SERIAL in $LIST; do
-        echo "adb -s $SERIAL $@"
-        adb -s $SERIAL $@
+        echo "adb -s $SERIAL $COMMAND"
+        adb -s $SERIAL $COMMAND
       done
       break
     else
