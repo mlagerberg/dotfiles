@@ -1,5 +1,5 @@
 #!/bin/bash
-# Runs a backup of /media/hdd/BTSync to /media/backup/BTSync,
+# Runs a backup of /media/hdd/BTSync to /media/backup/,
 # incremental, keeping the last 3 versions.
 
 
@@ -51,25 +51,31 @@ START=$(date +%s)
 echo "==="
 date
 echo "Starting backup script..."
-cd /media/backup/BTSync
+cd /media/backup
+
+# Shift old backups (looping around for performance)
+#echo "Shifting old backups..."
+#mv backup.3 backup.tmp 2>/dev/null
+#mv backup.2 backup.3 2>/dev/null
+#mv backup.1 backup.2 2>/dev/null
+#mv backup.0 backup.1 2>/dev/null
+#mv backup.tmp backup.0 2>/dev/null
+# Create hard link structure (uses practically no space)
+#echo "Creating link structure..."
+#cp -al backup.1/. backup.0
+
+#read -n1 -r -p "Press any key to continue..." key
 
 # Shift old backups (looping around for performance)
 echo "Shifting old backups..."
-mv backup.3 backup.tmp 2>/dev/null
+rm -rf backup.3
 mv backup.2 backup.3 2>/dev/null
 mv backup.1 backup.2 2>/dev/null
 mv backup.0 backup.1 2>/dev/null
-mv backup.tmp backup.0 2>/dev/null
-
-# Create hard link structure (uses practically no space)
-echo "Creating link structure..."
-cp -al backup.1/. backup.0
-
-read -n1 -r -p "Press any key to continue..." key
 
 # Copy only the changes over the hard link structure
 echo "Copying files..."
-rsync -v -a --delete /media/hdd/BTSync/ backup.0/
+rsync -v -a --delete --link-dest=../backup.1 /media/hdd/BTSync/ backup.0/
 
 # Remount for read-only
 #mount -o remount,ro /media/backup
@@ -85,5 +91,4 @@ echo "Script ran for $(human $DIFF)" > /home/pi/rsync.log
 
 # Annnnd notify
 echo "Backup finished in $(human $DIFF)" | mail -s "Backup finished" "pi@localhost"
-
 
