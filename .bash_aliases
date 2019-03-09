@@ -2,7 +2,7 @@
 alias sn='sudo nano'
 alias ..='cd ..'
 alias cd..='cd ..'
-alias la='ls -la'
+alias la='ls -alF'
 
 # nano
 #alias nano='nano --smooth --autoindent --const'
@@ -19,6 +19,8 @@ alias memory='ps aux --sort -rss | head'
 alias edit='nano'
 alias cls='clear'
 
+# Execute ADB command on all connected devices
+alias adbplus=~/dotfiles/adb.sh
 
 # perform 'ls' after 'cd' if successful.
 cdls() {
@@ -28,8 +30,10 @@ cdls() {
     ls
   fi
 }
+
 mkdircd() {
   mkdir -p "$@" && eval cd "\"\$$#\"";
 }
 
-. .bash_aliases_pi
+#. .bash_aliases_pi
+
