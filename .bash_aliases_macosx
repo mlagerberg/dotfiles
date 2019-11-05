@@ -13,3 +13,9 @@ export JAVA_TOOL_OPTIONS="-Dapple.awt.UIElement=true"
 alias adb2='~/dotfiles/adb.sh'
 alias adbplus='~/dotfiles/adb.sh'
 alias capture='~/dotfiles/adbcapture.sh'
+
+alias fprep='~/dotfiles/fprep.sh'
+
+flen() {
+	ffprobe -i $1 -show_format | grep duration
+}
