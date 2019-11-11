@@ -30,3 +30,9 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # Flushing DNS cache
 alias flushdns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
+
+alias fprep='~/dotfiles/fprep.sh'
+
+flen() {
+	ffprobe -i $1 -show_format | grep duration
+}
