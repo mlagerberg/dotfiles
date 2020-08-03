@@ -2,6 +2,7 @@
 # /home/pi/dotfiles/dotfiles/status.sh
 
 source /home/pi/dotfiles/dotfiles/functions.sh
+source /etc/os-release
 
 log_ts_file="/home/pi/.status_timestamp"
 
@@ -47,6 +48,11 @@ function failed_logins {
 
 ###########################################
 clear
+
+#### Show OS version
+header 'OS Version' '`cat /etc/os-release`'
+echo $PRETTY_NAME
+
 
 #### Show current sessions
 header 'Currently logged in' '`w`'
