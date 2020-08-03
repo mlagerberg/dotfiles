@@ -45,7 +45,7 @@ sync; sync
 
 # Shut down some services before starting backup process
 log "Stopping services before backup..."
-service btsync stop
+#service btsync stop
 
 # Begin the backup process, should take about 2.5 hours from 4Gb SD card to HDD
 log "Backing up SD card to external HDD."

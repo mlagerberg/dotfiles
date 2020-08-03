@@ -35,7 +35,7 @@ function failed_logins {
 				error "$line"
 				count=$((count + 1))
 			fi
-		done < <(cat /var/log/auth.log | grep -a 'failure')
+		done < <(cat /var/log/auth.log | grep 'failure')
 		if (($count == 0)); then
 			echo "${fcdark}None.${fcreset}"
 		fi
@@ -88,8 +88,7 @@ fi
 # Running deamons
 header 'Running services' ''
 is_running "BitTorrent Sync" "btsync"
-is_running "Privoxy        " "privoxy"
-is_running "Motion         " "motion"
+
 
 # Check  if clock is on time
 #header_line 'Time and date' '' "`date`"
@@ -97,11 +96,9 @@ is_running "Motion         " "motion"
 
 # Motion timelapse status
 #header 'Last snapshot' ''
-#datestamp=`ls -l /var/motion/lastsnap.jpg | cut -c74-83`
-#timestamp=`ls -l /var/motion/lastsnap.jpg | cut -c97-104`
+#datestamp=`ls -l /media/hdd/motion/lastsnap.jpg | cut -c74-83`
+#timestamp=`ls -l /media/hdd/motion/lastsnap.jpg | cut -c97-104`
 #header_line 'Last snapshot' '' "$datestamp at $timestamp"
-count=`ls -l /var/motion/* | wc -l`
-header_line 'Total snapshots' '' "$count"
 
 echo
 
