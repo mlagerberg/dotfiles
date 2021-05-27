@@ -3,6 +3,7 @@
 COMMAND=$@
 
 ### Handle special simplified commands
+# Open a URL on the device
 if [ "$1" = "open" ]; then
   if [ -z "$2" ]; then
     echo "No url supplied for `open` command."
@@ -11,6 +12,18 @@ if [ "$1" = "open" ]; then
     COMMAND="shell am start -a android.intent.action.VIEW -d '$2'"
   fi
 fi
+
+# Install an APK and open its folder in Finder
+if [ "$1" = "apk" ]; then
+  if [ -z "$2" ]; then
+    echo "No filename of an APK provided."
+    exit 1
+  else
+    COMMAND="install -r $2"
+    OPEN_AFTER=1
+  fi
+fi
+
 
 ### Get list of only the device identifiers
 # 1 list devices
@@ -75,4 +88,12 @@ else
       continue
     fi
   done
+fi
+
+### Open folder after install
+if [ -z ${OPEN_AFTER+x} ]; then
+  echo "Done."
+else
+  open "$(dirname "$2")"
+  echo "Done."
 fi
