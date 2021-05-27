@@ -31,8 +31,11 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 # Flushing DNS cache
 alias flushdns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
 
+# FFMPEG scripts
 alias fprep='~/dotfiles/fprep.sh'
+alias fquad='~/dotfiles/ffmpeg_quad_convert.sh'
 
 flen() {
 	ffprobe -i $1 -show_format | grep duration
 }
+

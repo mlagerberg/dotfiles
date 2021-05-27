@@ -1,32 +1,35 @@
-## Custom tmux setting
+### Sessions
 
-Note: the default `Ctrl+b` is replaced with the customized shortcut `Ctrl+space`.
+Show sessions (`tmux ls`)
+
+	Ctrl-b s
+
+> Note: customized shortcut is `Ctrl-space`
+
+New session
+
+	tmux new -s session-name
+
+Attach to existing session
+
+	tmux a
+	tmux a -t session-name
+
+Detaching from session (`tmux detach`)
+
+	Ctrl-b d
+
+Kill session
+
+	tmux kill-session -t session-name
 
 
-## Sessions
-
-Show sessions:		Ctrl+space  s
-			or `tmux ls`
-
-New session:		`tmux new -s foo`
-
-Attach to session:	`tmux a`
-			`tmux a -t foo`
-
-Detach from session:	Ctrl-b d
-			or `tmux detach`
-
-Kill session:		`tmux kill-session -t foo`
-
-
-## Key commands (after Ctrl+space)
+### Key commands (`Ctrl-space`)
 
 	? = help
 	s = list sessions
 	$ = rename current session
 	d = detach
-	
-#### Windows
 
 	c = create new window
 	, = rename current window
@@ -36,8 +39,6 @@ Kill session:		`tmux kill-session -t foo`
 	n = change to next window
 	p = change to previous window
 	0-9 = select window
-
-#### Panes
 
 	% = create horizontal pane
 	" = create vertical pane
@@ -51,8 +52,5 @@ Kill session:		`tmux kill-session -t foo`
 	{ = swap with previous pane
 	! = break the pane out of the window
 	x = kill the current pane
+
 	t = show time in current pane
-
-#### Other
-
-	] = scroll mode (q to exit)
