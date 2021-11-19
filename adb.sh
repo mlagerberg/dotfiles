@@ -24,6 +24,26 @@ if [ "$1" = "apk" ]; then
   fi
 fi
 
+# Upload a file to the Downloads folder on the phone
+if [ "$1" = "transfer" ]; then
+  if [ -z "$2" ]; then
+    echo "No filename to transfer to phone provided."
+    exit 1
+  else
+    COMMAND="push $2 /sdcard/Download/"
+  fi
+fi
+
+# Type text
+if [ "$1" = "input" ]; then
+  if [ -z "$2" ]; then
+    echo "No text provided to input on the device(s)."
+    exit 1
+  else
+    # Replace each space with %s
+    COMMAND="shell input text '${2// /$'%s'}'"
+  fi
+fi
 
 ### Get list of only the device identifiers
 # 1 list devices
