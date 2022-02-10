@@ -3,7 +3,9 @@
 COMMAND=$@
 
 ### Handle special simplified commands
-# Open a URL on the device
+
+# "adbplus open {url}"
+# Opens a URL on the device
 if [ "$1" = "open" ]; then
   if [ -z "$2" ]; then
     echo "No url supplied for `open` command."
@@ -13,7 +15,8 @@ if [ "$1" = "open" ]; then
   fi
 fi
 
-# Install an APK and open its folder in Finder
+# "adbplus apk {filename}"
+# Installs an APK and open its folder in Finder
 if [ "$1" = "apk" ]; then
   if [ -z "$2" ]; then
     echo "No filename of an APK provided."
@@ -24,6 +27,7 @@ if [ "$1" = "apk" ]; then
   fi
 fi
 
+# "adbplus transfer {filename}"
 # Upload a file to the Downloads folder on the phone
 if [ "$1" = "transfer" ]; then
   if [ -z "$2" ]; then
@@ -34,6 +38,7 @@ if [ "$1" = "transfer" ]; then
   fi
 fi
 
+# "adbplus input Lorem Ipsum"
 # Type text
 if [ "$1" = "input" ]; then
   if [ -z "$2" ]; then
@@ -42,6 +47,17 @@ if [ "$1" = "input" ]; then
   else
     # Replace each space with %s
     COMMAND="shell input text '${2// /$'%s'}'"
+  fi
+fi
+
+# "adb clear {app id}"
+# Clears app data
+if [ "$1" = "clear" ]; then
+  if [ -z "$2" ]; then
+    echo "No application ID provided."
+    exit 1
+  else
+    COMMAND="shell pm clear $2"
   fi
 fi
 
