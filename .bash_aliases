@@ -36,4 +36,3 @@ mkdircd() {
 }
 
 source ~/dotfiles/.bash_aliases_pi
-
