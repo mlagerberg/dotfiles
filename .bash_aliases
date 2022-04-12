@@ -35,5 +35,5 @@ mkdircd() {
   mkdir -p "$@" && eval cd "\"\$$#\"";
 }
 
-source .bash_aliases_pi
+source ~/dotfiles/.bash_aliases_pi
 
