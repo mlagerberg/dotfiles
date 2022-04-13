@@ -23,6 +23,10 @@ Kill session
 
 	tmux kill-session -t session-name
 
+See all key shortcuts
+
+	tmux list-keys
+                                                          
 
 ### Key commands (`Ctrl-space`)
 
@@ -42,10 +46,7 @@ Kill session
 
 	% = create horizontal pane
 	" = create vertical pane
-	h = move to the left pane
-	j = move to the pane below
-	l = move to the right pane
-	k = move to the pane above
+	arrow keys = focus other pane
 	q = show pane numbers
 	o = toggle between panes
 	} = swap with next pane
