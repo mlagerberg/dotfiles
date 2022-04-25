@@ -4,7 +4,7 @@ Show sessions (`tmux ls`)
 
 	Ctrl-b s
 
-> Note: customized shortcut is `Ctrl-space`
+> Note: on some Pi's i used the customized shortcut `Ctrl-space`
 
 New session
 
@@ -26,9 +26,9 @@ Kill session
 See all key shortcuts
 
 	tmux list-keys
-                                                          
+                
 
-### Key commands (`Ctrl-space`)
+### Key commands (`Ctrl-b`)
 
 	? = help
 	s = list sessions
@@ -44,14 +44,15 @@ See all key shortcuts
 	p = change to previous window
 	0-9 = select window
 
-	% = create horizontal pane
-	" = create vertical pane
+	% = split vertically into 2 panes
+	" = split horizontally
 	arrow keys = focus other pane
-	q = show pane numbers
 	o = toggle between panes
+
 	} = swap with next pane
 	{ = swap with previous pane
 	! = break the pane out of the window
 	x = kill the current pane
 
+	q = show pane numbers
 	t = show time in current pane
