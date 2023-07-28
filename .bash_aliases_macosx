@@ -5,3 +5,37 @@ alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO;'
 alias longpress='defaults write -g ApplePressAndHoldEnabled -bool true'
 alias nolongpress='defaults write -g ApplePressAndHoldEnabled -bool false'
 
+
+# Prevent Gradle from putting Java icons in the Dock
+export JAVA_TOOL_OPTIONS="-Dapple.awt.UIElement=true"
+
+# Adb shortcuts
+alias adb2='~/dotfiles/adb.sh'
+alias adbplus='~/dotfiles/adb.sh'
+alias capture='~/dotfiles/adbcapture.sh'
+
+# Python3 pip
+alias pip3_install="python3 -m $(which pip) install $1"
+
+# Flutter
+export PATH=`pwd`/flutter/bin:$PATH
+
+# Android build tools
+export PATH=$PATH:/Users/mathijs/Library/Android/sdk/build-tools/29.0.0
+
+# Colors
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+
+# Flushing DNS cache
+alias flushdns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
+
+# FFMPEG scripts
+alias fprep='~/dotfiles/fprep.sh'
+alias fquad='~/dotfiles/ffmpeg_quad_convert.sh'
+
+flen() {
+	ffprobe -i $1 -show_format | grep duration
+}
+

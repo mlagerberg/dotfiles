@@ -29,6 +29,7 @@ done
 chmod +x backup_pi.sh
 chmod +x status.sh
 chmod +x run_rsync.sh
+chmod +x pishrink.sh
 
 # Other convenient configurations
 git config --global color.ui auto
