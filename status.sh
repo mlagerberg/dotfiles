@@ -1,7 +1,7 @@
 #!/bin/bash
 # /home/pi/dotfiles/dotfiles/status.sh
 
-source /home/pi/dotfiles/dotfiles/functions.sh
+source /home/pi/dotfiles/functions.sh
 source /etc/os-release
 
 log_ts_file="/home/pi/.status_timestamp"
