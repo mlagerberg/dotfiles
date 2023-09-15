@@ -1,10 +1,10 @@
 #!/bin/bash
-# /home/pi/dotfiles/dotfiles/status.sh
+# ~/dotfiles/dotfiles/status.sh
 
 source /home/pi/dotfiles/functions.sh
 source /etc/os-release
 
-log_ts_file="/home/pi/.status_timestamp"
+log_ts_file="/home/vps/.status_timestamp"
 
 function header_line {
 	echo
@@ -65,14 +65,15 @@ w
 
 
 ### Memory usage statistics
-#header "Memory usage" '`free`'
-#free
+header "Memory usage" '`free`'
+free
 
 
 ### List of relevant disk space statistics
 header 'Disk space' '`df -h`'
 #Only show table header, important partitions and external hd:
-df -h -l --total | grep -E "/dev/sda|rootfs|Filesystem"
+df -h -l --total
+# | grep -E "/dev/sda|rootfs|Filesystem"
 
 
 ### Security: check currently open ports (TCP and UDP)
@@ -92,8 +93,8 @@ fi
 
 
 # Running deamons
-header 'Running services' ''
-is_running "BitTorrent Sync" "btsync"
+#header 'Running services' ''
+#is_running "BitTorrent Sync" "btsync"
 
 
 # Check  if clock is on time

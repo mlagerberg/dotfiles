@@ -4,6 +4,21 @@ COMMAND=$@
 
 ### Handle special simplified commands
 
+# "adbplus help"
+# Shows the custom commands
+if [ "$1" = "help" ]; then
+  echo "Usage:
+adbplus help			Show this message
+adbplus open {uri} 		Opens a URI on the device
+adbplus apk {file}		Installs an APK and opens its folder in Finder
+adbplus transfer { file}	Transfers a file to the Downloads folder on the device
+adbplus input '{text}'		Types the text on the device
+adbplus clear {app id} 		Clears the data for the given app.
+
+Other commands are passed on to adb."
+  exit 0
+fi
+
 # "adbplus open {url}"
 # Opens a URL on the device
 if [ "$1" = "open" ]; then
@@ -97,7 +112,8 @@ else
     echo ""
     i=1
     while read -r line; do
-      echo "  [$i] $line"
+      serial=`echo "$LIST" | head -n $i | tail -n 1`
+      echo "  [$i] $line - $serial"
       i=$((i+1))
     done <<< "$DEVICES"
     echo "  [a] All"
