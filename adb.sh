@@ -14,6 +14,8 @@ adbplus apk {file}		Installs an APK and opens its folder in Finder
 adbplus transfer { file}	Transfers a file to the Downloads folder on the device
 adbplus input '{text}'		Types the text on the device
 adbplus clear {app id} 		Clears the data for the given app.
+adbplus connect {ip}            Connects to WiFi-debugging enabled device, on port 37000-44000
+adbplus fixport [ip]            Sets a fixed port for WiFi-debugging (5555) until device reboot
 
 Other commands are passed on to adb."
   exit 0
@@ -75,6 +77,40 @@ if [ "$1" = "clear" ]; then
     COMMAND="shell pm clear $2"
   fi
 fi
+
+# Finds the port to connect to for the given IP
+if [ "$1" = "connect" ]; then
+  if [ -z "$2" ]; then
+    echo "No IP address provided."
+    exit 1
+  else
+    IP="$2"
+    echo "Scanning ports..."
+    PORT=$(nmap $IP -p 37000-44000 | awk "/\/tcp/" | cut -d/ -f1)
+    echo "Port $PORT found for debugging"
+    #adb connect $IP:$(nmap $IP -p 37000-44000 | awk "/\/tcp/" | cut -d/ -f1)
+    adb connect "$IP:$PORT"
+    exit 0
+  fi
+fi
+
+# Fixes the port for WiFi-debugging to 5555 until next reboot
+# You might need to disconnect and reconnect afterwards
+if [ "$1" = "fixport" ]; then
+  if [ -z "$2" ]; then 
+    COMMAND="tcpip 5555"
+    echo "Remember to disconnect and reconnect after this."
+  else
+    echo "Note: this command only works when only one device is connected."
+    adb tcpip 5555
+    adb disconnect
+    echo "Port set to 5555, reconnecting..."
+    adb connect "$2:5555"
+    echo "Reconnected."
+    exit 0;
+  fi
+fi
+
 
 ### Get list of only the device identifiers
 # 1 list devices
