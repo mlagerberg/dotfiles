@@ -2,12 +2,12 @@
 alias sn='sudo nano'
 alias ..='cd ..'
 alias cd..='cd ..'
-alias la='ls -alF'
+alias la='ls -lahFG'
 
 # nano
 #alias nano='nano --smooth --autoindent --const'
-alias nano='nano --autoindent --const'
-alias nanon='nano --const'
+#alias nano='nano --autoindent --const'
+#alias nanon='nano --const'
 
 # statements I can't remember
 alias users='cat /etc/passwd | grep "/home" |cut -d: -f1'

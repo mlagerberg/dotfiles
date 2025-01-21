@@ -14,7 +14,7 @@ adbplus apk {file}		Installs an APK and opens its folder in Finder
 adbplus transfer { file}	Transfers a file to the Downloads folder on the device
 adbplus input '{text}'		Types the text on the device
 adbplus clear {app id} 		Clears the data for the given app.
-adbplus connect {ip}            Connects to WiFi-debugging enabled device, on port 37000-44000
+adbplus wifi {ip}            Connects to WiFi-debugging enabled device, on port 37000-44000
 adbplus fixport [ip]            Sets a fixed port for WiFi-debugging (5555) until device reboot
 
 Other commands are passed on to adb."
@@ -79,7 +79,7 @@ if [ "$1" = "clear" ]; then
 fi
 
 # Finds the port to connect to for the given IP
-if [ "$1" = "connect" ]; then
+if [ "$1" = "wifi" ]; then
   if [ -z "$2" ]; then
     echo "No IP address provided."
     exit 1

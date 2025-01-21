@@ -1,0 +1,13 @@
+[
+  {
+    "caption": "Remove from git, keep local",
+    "command": "git",
+    "args": {
+        "argv": [
+            "rm",
+            "--cached",
+            "$text"
+        ]
+    }
+  }
+]
