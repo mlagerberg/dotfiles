@@ -1,23 +1,33 @@
 #!/bin/bash
 
+# ================================================
+# 
+
 COMMAND=$@
 
 ### Handle special simplified commands
 
 # "adbplus help"
 # Shows the custom commands
+
 if [ "$1" = "help" ]; then
   echo "Usage:
-adbplus help			Show this message
-adbplus open {uri} 		Opens a URI on the device
-adbplus apk {file}		Installs an APK and opens its folder in Finder
-adbplus transfer { file}	Transfers a file to the Downloads folder on the device
-adbplus input '{text}'		Types the text on the device
-adbplus clear {app id} 		Clears the data for the given app.
-adbplus wifi {ip}            Connects to WiFi-debugging enabled device, on port 37000-44000
-adbplus fixport [ip]            Sets a fixed port for WiFi-debugging (5555) until device reboot
+adbplus {command} [args]
 
-Other commands are passed on to adb."
+Shows a list of connected devices, and sends the adb command {command} to the
+selected device.
+
+Besides the adb command, adds the following new ones:
+
+  help              Show this message
+  open {uri}        Opens a URI on the device
+  apk {file}        Installs an APK and opens its folder in Finder
+  transfer {file}	  Transfers a file to the Downloads folder on the device
+  input '{text}'    Types the text on the device
+  clear {app id}    Clears the data for the given app.
+  wifi {ip}         Connects to WiFi-debugging enabled device, on port 37000-44000
+  fixport {ip}      Sets a fixed port for WiFi-debugging (5555) until device reboot
+"
   exit 0
 fi
 
